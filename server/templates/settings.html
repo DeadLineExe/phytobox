@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Теплица</title>
+	<link rel="stylesheet" href='../static/style.css'/>
+	<link rel="shortcut icon" href='../static/favicon.ico'/>
+    </head>
+    <body>
+        <table border="1" width="100%">
+            <tr>
+                <td width="12%" ><img src="../static/light.png" width="100%" align="left"></td>
+		<td width="20%" ><a><h7>ОСВЕЩЕНИЕ</h7></a></td>                
+		<td colspan="2" >(ВРЕМЯ)</td>
+            </tr>
+	    <tr>
+		<td ><img src="../static/fertillizer.png" width="100%" align="left"></td>
+		<td ><a><h7>УДОБРЕНИЕ</h7></a></td>
+		<td colspan="2" >(ВРЕМЯ)</td>
+	    </tr>
+            <tr>
+                <td > <img src="../static/climat.png" width="100%" align="left"></td>
+		<td > <a><h7>КЛИМАТ-КОНТРОЛЬ</h4></a></td>
+		<td colspan="2"> (ТЕМПЕРАТУРА) </td>
+	    </tr>
+	    <tr>
+		<td width="10%" > <img src="../static/autopoliv.png" width="100%" align="left"></td>
+                <td > <a><h7>АВТОПОЛИВ</h7></a></td>
+		<td colspan="2" > (ВЛАЖНОСТЬ ПОЧВЫ) </td>
+            </tr>
+	    <tr>
+                <td colspan="2" ><h3><a href="/"class="button">Главная страница</a></h3></td>
+		<td colspan="1" ><h3><a href="/"class="button">Сохранить настройки</a></h3> </td>
+                <td ><a><div id="current_date_time_block"></div></a></td>
+	    </tr>
+        </table>
+    </body>
+
+    <script type="text/javascript">
+    function zero_first_format(value){
+        if (value < 10) value='0'+value;
+        return value;
+    }
+
+    function date_time(){
+        var current_datetime = new Date();
+        var hours = current_datetime.getHours();
+        var minutes = zero_first_format(current_datetime.getMinutes());
+        var seconds = zero_first_format(current_datetime.getSeconds());
+	
+        return hours+":"+minutes+":"+seconds;
+    }
+
+    function date_day(){
+	var month=new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
+	
+	var current_datetime = new Date();
+	var d = current_datetime.getDate();
+        var m = current_datetime.getMonth()+1;
+        var y = current_datetime.getFullYear();
+
+	return d+" "+month[m]+" "+y+" год"
+    }
+
+    setInterval(function () {
+    	document.getElementById('current_date_time_block').innerHTML = date_day()+'<br/><b>'+date_time();
+    }, 1000);
+</script>
+<html>
